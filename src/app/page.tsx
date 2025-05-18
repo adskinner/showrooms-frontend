@@ -37,7 +37,7 @@ export default function HomePage() {
             
         </div>
         <div>
-          <h2 className="text-3xl text-white my-4 max-w-screen-xl mx-auto px-16 mb-12">Brands we've imported* for our showroom clients</h2>
+          <h2 className="text-3xl text-white my-4 max-w-screen-xl mx-auto px-16 mb-12">Brands we&rsquo;ve imported* for our showroom clients</h2>
           <ul className="flex gap-x-4">
             <li className="">
               <img src="https://r-hughes.com/wp-content/themes/rhugheslife/assets/img/rhlogo-white.svg"/>
