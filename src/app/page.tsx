@@ -1,6 +1,6 @@
-import { client } from '@/lib/sanity'
-import { urlFor } from '@/lib/imageUrl'
-import { PortableText } from '@portabletext/react'
+//import { client } from '@/lib/sanity'
+//import { urlFor } from '@/lib/imageUrl'
+//import { PortableText } from '@portabletext/react'
 
 export default function HomePage() {
   return (
