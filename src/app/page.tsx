@@ -6,55 +6,84 @@
 import React, { useEffect, useState } from 'react'
 //import Image from 'next/image'
 
-export default function HomePage() {
-  const bgImages = [
-    '/images/bg-images/bg-1.jpg',
-    '/images/bg-images/bg-2.jpg',
-    '/images/bg-images/bg3.jpg',
-    '/images/bg-images/bg4.jpg',
-  ]
+const IMAGES = [
+  '/images/bg-images/bg-1.jpg',
+  '/images/bg-images/bg-2.jpg',
+  '/images/bg-images/bg-3.jpg',
+  '/images/bg-images/bg-4.jpg',
+  '/images/bg-images/bg-5.jpg',
+  '/images/bg-images/bg-6.jpg',
+] as const
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [nextIndex, setNextIndex] = useState(1)
-  const [showNext, setShowNext] = useState(false)
+
+export default function HomePage() {
   const [showModal, setShowModal] = useState(false)
+
+  /** which layer is on top – 'a' or 'b' */
+  const [top, setTop] = useState<'a' | 'b'>('a')
+  /** image actually shown on each layer */
+  const [layerSrc, setLayerSrc] = useState<{ a: string; b: string }>({
+    a: IMAGES[0],
+    b: IMAGES[1],
+  })
+  /** index of the *next* image we’ll need */
+  const [idx, setIdx] = useState(2) // IMAGES[2] will be the 3rd image shown
+
   useEffect(() => {
-    document.body.style.overflow = showModal ? 'hidden' : 'auto';
-  }, [showModal]);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowNext(true)
-      setTimeout(() => {
-        setCurrentIndex(nextIndex)
-        setNextIndex((nextIndex + 1) % bgImages.length)
-        setShowNext(false)
-      }, 1000)
-    }, 6000)
-  
-    return () => clearInterval(interval)
-  }, [nextIndex, bgImages.length])
+    const FADE_MS = 1200          // fade duration
+    const DISPLAY_MS = 6000       // time each image stays fully visible
+
+    const id = setInterval(() => {
+      // 1️⃣ put upcoming image on the hidden layer
+      setLayerSrc(prev => {
+        let nextImage: string
+        do {
+          nextImage = IMAGES[Math.floor(Math.random() * IMAGES.length)]
+        } while (nextImage === prev[top]) // avoid showing same image again
+      
+        return {
+          ...prev,
+          [top === 'a' ? 'b' : 'a']: nextImage,
+        }
+      })
+
+      // 2️⃣ after image is set, trigger the fade by switching who’s “on top”
+      //    (CSS takes care of the opacity animation)
+      //    Wait a micro‑task so the browser has the new background first.
+      requestAnimationFrame(() =>
+        setTop(prev => (prev === 'a' ? 'b' : 'a')),
+      )
+
+      // 3️⃣ calculate the next index for the _following_ cycle
+      setIdx(next => (next + 1) % IMAGES.length)
+    }, DISPLAY_MS)
+
+    return () => clearInterval(id)
+  }, [])
   return (
     
     <main className="bg-black">
-      <section className="relative hero min-h-screen overflow-hidden">
-  {/* Current background image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center z-0 transition-none"
-    style={{ backgroundImage: `url(${bgImages[currentIndex]})` }}
-  />
+   <section className="relative min-h-screen overflow-hidden">
+      {/* LAYER A */}
+      <div
+        className={`absolute inset-0 bg-center bg-cover transition-opacity duration-[1200ms] ${
+          top === 'a' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+        }`}
+        style={{ backgroundImage: `url(${layerSrc.a})` }}
+      />
+      {/* LAYER B */}
+      <div
+        className={`absolute inset-0 bg-center bg-cover transition-opacity duration-[1200ms] ${
+          top === 'b' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+        }`}
+        style={{ backgroundImage: `url(${layerSrc.b})` }}
+      />
 
-  {/* Fading in next image */}
-  <div
-    className={`absolute inset-0 bg-cover bg-center z-10 transition-opacity duration-1000 ${showNext ? 'opacity-100' : 'opacity-0'}`}
-    style={{ backgroundImage: `url(${bgImages[nextIndex]})` }}
-  />
+      {/* optional dark overlay */}
+      <div className="absolute inset-0 bg-black/30 z-20" />
 
-  {/* Dark overlay */}
-  <div className="absolute inset-0 bg-black/30 z-20" />
-
-  {/* Text content */}
-  <div className="relative z-30 max-w-screen-2xl mx-auto p-8 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
+      {/* hero content */}
+  <div className="relative z-20 max-w-screen-2xl mx-auto p-8 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
     <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
     <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-6 md:mb-12">
       We are a tech studio for multi-line luxury interior showrooms.

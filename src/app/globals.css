@@ -38,3 +38,7 @@ body {
 summary::-webkit-details-marker {
   display: none;
 }
+
+.fade-image {
+  transition: opacity 1s ease-in-out;
+}
