@@ -4,7 +4,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
+//import Image from 'next/image'
 
 export default function HomePage() {
   const bgImages = [
@@ -21,7 +21,6 @@ export default function HomePage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setShowNext(true)
-  
       setTimeout(() => {
         setCurrentIndex(nextIndex)
         setNextIndex((nextIndex + 1) % bgImages.length)
@@ -30,7 +29,7 @@ export default function HomePage() {
     }, 6000)
   
     return () => clearInterval(interval)
-  }, [nextIndex])
+  }, [nextIndex, bgImages.length])
   return (
     
     <main className="bg-black">
