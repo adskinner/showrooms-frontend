@@ -35,7 +35,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-black">
-      <section className="relative h-auto md:min-h-screen">
+      <section className="relative h-full min-h-screen">
       {/* Background Slider */}
       <div className="absolute inset-0 z-0 h-full">
         <Slider {...sliderSettings}>
@@ -52,9 +52,9 @@ export default function HomePage() {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-20 max-w-screen-2xl mx-auto py-8 px-6 md:p-16 h-auto md:min-h-screen flex flex-col justify-center">
+      <div className="relative z-20 max-w-screen-2xl mx-auto py-8 px-6 md:p-16 h-full min-h-screen flex flex-col justify-center">
       <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
-    <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-4 md:mb-12">
+    <p className="text-3xl md:text-7xl text-white font-normal md:leading-18 mb-4 md:mb-12">
       We are a tech studio for multiline luxury interior showrooms.
     </p>
     <p className="text-lg md:text-3xl text-white font-thin md:leading-12 font-stratoslight">
