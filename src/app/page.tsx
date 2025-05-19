@@ -17,6 +17,10 @@ export default function HomePage() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [nextIndex, setNextIndex] = useState(1)
   const [showNext, setShowNext] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  useEffect(() => {
+    document.body.style.overflow = showModal ? 'hidden' : 'auto';
+  }, [showModal]);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +60,8 @@ export default function HomePage() {
       We are a tech studio for multi-line luxury interior showrooms.
     </p>
     <p className="text-xl md:text-3xl text-white font-thin md:leading-12 font-stratoslight">
-      Allison Skinner and her specialized team run a tech studio built specifically for interior showrooms...
+      Allison Skinner and her specialized team run a tech studio built specifically for interior showrooms. We work with creative, design-driven teams who don’t have the time or technical bandwidth to manage a digital storefront.
+      We turn your physical showroom into a shoppable digital experience, complete with a full product catalog, trade functionality and a tailored design.
     </p>
     <ul className="flex-col md:flex-row flex text-white text-xl md:text-2xl gap-x-12 gap-y-4 pt-6 md:pt-16">
       <li><a className="underline underline-offset-6 decoration-1 hover:no-underline uppercase tracking-wide" href="#work">Work</a></li>
@@ -129,36 +134,119 @@ export default function HomePage() {
   <h2 className=" text-xl text-white my-2 md:my-4   uppercase tracking-widest text-left md:text-center">
     Brands we&rsquo;ve imported
   </h2>
-  <p className="text-left md:text-center text-sm text-stone-300 "><a href="#" className="underline underline-offset-4 hover:no-underline">View Full List</a></p>
- 
+  <p className="text-left md:text-center text-sm text-stone-300">
+  <button
+    onClick={() => setShowModal(true)}
+    className="underline underline-offset-4 hover:no-underline"
+  >
+    View Full List
+  </button>
+</p> 
   <div className="relative mt-6 md:mt-12 overflow-hidden w-full">
     <ul className="debug-scroll flex gap-x-6 md:gap-x-12 min-w-[200%]">
       {[...Array(2)].map((_, i) => (
         <React.Fragment key={i}>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/alexanderlamont.jpg" alt="Brand logo" />
             <p>Alexander Lamont</p>
           </li>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/apparatus.jpeg" alt="Brand logo"  />
             <p>Apparatus</p>
           </li>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/arnodeclercq.jpg" alt="Brand logo"  />
             <p>Arnodeclercq</p>
           </li>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/bassamfellows.jpeg" alt="Brand logo"  />
             <p>BassamFellows</p>
           </li>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/brettdesign.jpeg" alt="Brand logo"  />
             <p>Brett Design</p>
           </li>
-          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-white text-center">
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
             <img src="/images/brands/caste.jpg" alt="Brand logo" />
             <p>Caste</p>
           </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/chabaan.jpg" alt="Brand logo" />
+            <p>Chabaan Designs</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/christopher-boots.jpg" alt="Brand logo" />
+            <p>Christopher Boots</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/coup.jpg" alt="Brand logo" />
+            <p>COUP Design</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/cp.jpg" alt="Brand logo" />
+            <p>Collection Particuliere</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/cp.jpg" alt="Brand logo" />
+            <p>DLV Designs</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/draga-aurel.jpg" alt="Brand logo" />
+            <p>Draga Aurel</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/erden.jpg" alt="Brand logo" />
+            <p>Erden Rugs</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/fisher-weisman.jpg" alt="Brand logo" />
+            <p>Fisher Weisman</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/hallworth.jpg" alt="Brand logo" />
+            <p>Hallworth</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/hector-finch.jpg" alt="Brand logo" />
+            <p>Hector Finch</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/jliston.jpg" alt="Brand logo" />
+            <p>J Liston Design</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/johnpomp.jpg" alt="Brand logo" />
+            <p>John Pomp</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/jonathanbrowning.jpg" alt="Brand logo" />
+            <p>Jonathan Browning</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/josephjeup.jpg" alt="Brand logo" />
+            <p>Joseph Jeup</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/kimberlydenman.jpg" alt="Brand logo" />
+            <p>Kimberly Denman</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/konekt.jpg" alt="Brand logo" />
+            <p>Konket</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/liaigre.jpg" alt="Brand logo" />
+            <p>Liaigre</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/natasha-baradaran.jpg" alt="Brand logo" />
+            <p>Natasha Baradaran</p>
+          </li>
+          <li className="w-[50vw] md:w-[25vw] flex-none flex items-center flex-col justify-center text-stone-300 text-center">
+            <img src="/images/brands/ochre.jpg" alt="Brand logo" />
+            <p>Ochre</p>
+          </li>
+          
           
         </React.Fragment>
       ))}
@@ -301,8 +389,103 @@ export default function HomePage() {
   <p className="text-2xl md:text-4xl"><a className="text-center bg-white w-full md:w-auto block md:inline-block rounded-full py-2 md:py-4 px-6 md:px-12 text-black hover:bg-red-500 hover:text-white" href="mailto:info@allisondskinner.com">info [at] allisondskinner.com</a></p>
 </section>
 
-
+{showModal && (
+  <div className="fixed inset-0 bg-black/90 z-50 flex flex-col">
+    <div className="p-6 flex justify-between items-center border-b border-white text-white">
+      <h2 className="text-xl uppercase tracking-wider">All Brands</h2>
+      <button
+        className="text-sm uppercase underline hover:no-underline"
+        onClick={() => setShowModal(false)}
+      >
+        Close
+      </button>
+    </div>
+    <div className="overflow-y-auto flex-1 p-6 md:p-12 text-white space-y-4 text-lg md:text-xl">
+      <ul className="grid grid-cols-2 lg:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-8">
+        {[
+  "Alexander Lamont",
+  "Allan Knight",
+  "Anees Furniture & Design",
+  "Apparatus",
+  "Armadillo Rugs",
+  "Arnodeclercq",
+  "Atelier Vaste",
+  "BassamFellows",
+  "Bella Figura",
+  "Brett Design",
+  "COUP Design",
+  "Cal Summers",
+  "Casella Lighting",
+  "Castellija",
+  "Caste",
+  "Chabaan Designs",
+  "Christopher Boots",
+  "Collett & Victor",
+  "Collection Particuliere",
+  "Dakota Jackson",
+  "Delisle Paris",
+  "Designs of the Time",
+  "DLV Designs",
+  "Draga Aurel",
+  "Entrelacs",
+  "Erden Rugs",
+  "Erinn V.",
+  "Fisher Weisman",
+  "Fuse Lighting",
+  "Hallworth",
+  "Hamilton Conte",
+  "Hector Finch",
+  "J Liston Design",
+  "JM Szymanski",
+  "Jiun Ho",
+  "John Pomp",
+  "Jonathan Browning",
+  "Joseph Jeup",
+  "Kimberly Denman",
+  "Konket",
+  "Kufri",
+  "Lance Woven Leather",
+  "Liaigre",
+  "Logan Montgomery Textiles",
+  "Lost Profile",
+  "Matthew Fisher",
+  "Morada Haute Furniture",
+  "Natasha Baradaran",
+  "Ochre",
+  "Palmer Hargrave",
+  "Paul Matter",
+  "Philip Nimmo",
+  "Philippe Hurel",
+  "Pierre Augustin Rose",
+  "Powell & Bonnell",
+  "Randolph Hein",
+  "Reduxr",
+  "Refractory",
+  "Riloh",
+  "Roll & Hill",
+  "Rose Gold Society",
+  "Rose Uniacke",
+  "Ruemmler",
+  "Savel",
+  "Sedilia",
+  "Sirak",
+  "Studio Bel Vitro",
+  "Tom Faulkner",
+  "Tuell and Reynolds",
+  "Una Malan",
+  "Van Rossum",
+  "Yarn Collective",
+  "Zisu Leather"
+].map((brand, i) => (
+          <li key={i}>{brand}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
       
     </main>
+
+    
   )
 }

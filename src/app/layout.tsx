@@ -28,7 +28,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/bxe5tjx.css" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`} 
       >
         {children}
       </body>
