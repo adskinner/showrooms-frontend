@@ -35,9 +35,9 @@ export default function HomePage() {
 
   return (
     <main className="bg-black">
-      <section className="min-h-screen relative">
+      <section className="relative h-auto md:min-h-screen">
       {/* Background Slider */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 h-full">
         <Slider {...sliderSettings}>
           {IMAGES.map((src, i) => (
             <div key={i}>
@@ -52,16 +52,16 @@ export default function HomePage() {
       </div>
 
       {/* Foreground Content */}
-  <div className="relative z-20 max-w-screen-2xl mx-auto py-8 px-6 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
-    <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
-    <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-6 md:mb-12">
+      <div className="relative z-20 max-w-screen-2xl mx-auto py-8 px-6 md:p-16 h-auto md:min-h-screen flex flex-col justify-center">
+      <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
+    <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-4 md:mb-12">
       We are a tech studio for multiline luxury interior showrooms.
     </p>
-    <p className="text-xl md:text-3xl text-white font-thin md:leading-12 font-stratoslight">
-      Allison Skinner and her specialized team run a tech studio built specifically for interior showrooms. We work with creative, design-driven teams who don’t have the time or technical bandwidth to manage a digital storefront.
-      We turn your physical showroom into a shoppable digital experience, complete with a full product catalog, trade functionality and a tailored design.
+    <p className="text-lg md:text-3xl text-white font-thin md:leading-12 font-stratoslight">
+      Allison Skinner and her specialized team run a tech studio built specifically for interior showrooms. We work with creative, design-driven teams who don’t have the time or technical bandwidth to manage a digital storefront.</p>
+      <p className="text-lg md:text-3xl text-white font-thin md:leading-12 font-stratoslight">We turn your physical showroom into a shoppable digital experience, complete with a full product catalog, trade functionality and a tailored design.
     </p>
-    <ul className="flex-col md:flex-row flex text-white text-xl md:text-2xl gap-x-12 gap-y-4 pt-6 md:pt-16">
+    <ul className="flex-col md:flex-row flex text-white text-lg md:text-2xl gap-x-12 gap-y-3 pt-6 md:pt-16">
       <li><a className="underline underline-offset-6 decoration-1 hover:no-underline uppercase tracking-wide" href="#work">Work</a></li>
       <li><a className="underline underline-offset-6 decoration-1 hover:no-underline uppercase tracking-wide" href="#services">Services</a></li>
       <li><a className="underline underline-offset-6 decoration-1 hover:no-underline uppercase tracking-wide" href="#about">About</a></li>
@@ -132,7 +132,7 @@ export default function HomePage() {
   <h2 className=" text-xl text-white my-2 md:my-4   uppercase tracking-widest text-left md:text-center px-6 md:px-16">
     Brands we&rsquo;ve imported
   </h2>
-  <p className="text-left md:text-center text-sm text-stone-300 md:px-16">
+  <p className="text-left md:text-center text-sm text-stone-300 px-6 md:px-16">
   <button
     onClick={() => setShowModal(true)}
     className="underline underline-offset-4 hover:no-underline"
@@ -379,7 +379,7 @@ export default function HomePage() {
   </div>
 
 </section>
-<section className="px-8 md:px-16 pt-12 md:pt-24 text-left md:text-center pb-24 md:pb-64" id="contact">
+<section className="px-8 md:px-16 pt-8 md:pt-24 text-left md:text-center pb-24 md:pb-64" id="contact">
   <h2 className="text-white my-4 text-3xl md:text-7xl font-light mx-auto">Get in Contact</h2>
   <p className="mb-4 md:mb-10 text-white text-lg md:text-2xl">It&rsquo;s as easy as sending Allison an email ♥️</p>
   <p className="text-2xl md:text-4xl"><a className="text-center bg-white w-full md:w-auto block md:inline-block rounded-full py-2 md:py-4 px-6 md:px-12 text-black hover:bg-red-500 hover:text-white" href="mailto:info@allisondskinner.com">info@allisondskinner.com</a></p>
