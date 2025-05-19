@@ -35,7 +35,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-black">
-      <section>
+      <section className="min-h-screen relative">
       {/* Background Slider */}
       <div className="absolute inset-0 z-0">
         <Slider {...sliderSettings}>
@@ -52,10 +52,10 @@ export default function HomePage() {
       </div>
 
       {/* Foreground Content */}
-  <div className="relative z-20 max-w-screen-2xl mx-auto p-8 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
+  <div className="relative z-20 max-w-screen-2xl mx-auto py-8 px-6 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
     <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
     <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-6 md:mb-12">
-      We are a tech studio for multi-line luxury interior showrooms.
+      We are a tech studio for multiline luxury interior showrooms.
     </p>
     <p className="text-xl md:text-3xl text-white font-thin md:leading-12 font-stratoslight">
       Allison Skinner and her specialized team run a tech studio built specifically for interior showrooms. We work with creative, design-driven teams who don’t have the time or technical bandwidth to manage a digital storefront.
@@ -71,7 +71,7 @@ export default function HomePage() {
 </section>
 
      
-      <section className="pt-12 md:pt-24 pb-12 md:pb-16 px-8 md:px-16 max-w-screen-3xl mx-auto" id="work">
+      <section className="pt-12 md:pt-24 pb-12 md:pb-16 px-6 md:px-16 max-w-screen-3xl mx-auto" id="work">
         <div>
             <div className="flex flex-wrap md:-mx-4 pb-12 md:pb-20">
             <h2 className="text-xl text-white font-light pb-2 md:hidden">R HUGHES</h2>
@@ -128,11 +128,11 @@ export default function HomePage() {
             
           </div>
           </section>
-          <section className="pt-6 pb-12 md:py-16">
-  <h2 className=" text-xl text-white my-2 md:my-4   uppercase tracking-widest text-left md:text-center">
+          <section className="pt-0 pb-12 md:py-16">
+  <h2 className=" text-xl text-white my-2 md:my-4   uppercase tracking-widest text-left md:text-center px-6 md:px-16">
     Brands we&rsquo;ve imported
   </h2>
-  <p className="text-left md:text-center text-sm text-stone-300">
+  <p className="text-left md:text-center text-sm text-stone-300 md:px-16">
   <button
     onClick={() => setShowModal(true)}
     className="underline underline-offset-4 hover:no-underline"
@@ -254,7 +254,7 @@ export default function HomePage() {
 
       </section>
 
-<section className="px-8 py-0 md:px-16 md:py-16" id="services">
+<section className="px-6 py-0 md:px-16 md:py-16" id="services">
 <details className="mb-8 md:mb-16 bg-black border-b border-white group">
   <summary className="cursor-pointer pr-4 pb-4 text-white text-2xl md:text-4xl font-light flex justify-between items-center">
     <span>We design and build a custom website for your showroom</span>
