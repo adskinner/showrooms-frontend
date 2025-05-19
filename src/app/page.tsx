@@ -1,10 +1,9 @@
-//import { client } from '@/lib/sanity'
-//import { urlFor } from '@/lib/imageUrl'
-//import { PortableText } from '@portabletext/react'
 'use client'
 
-import React, { useEffect, useState } from 'react'
-//import Image from 'next/image'
+import React, { useState, useEffect } from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const IMAGES = [
   '/images/bg-images/bg-1.jpg',
@@ -13,76 +12,46 @@ const IMAGES = [
   '/images/bg-images/bg-4.jpg',
   '/images/bg-images/bg-5.jpg',
   '/images/bg-images/bg-6.jpg',
-] as const
+]
 
+const sliderSettings = {
+  autoplay: true,
+  autoplaySpeed: 6000,
+  fade: true,
+  infinite: true,
+  speed: 1000,
+  arrows: false,
+  dots: false,
+  pauseOnHover: false,
+  pauseOnFocus: false,
+}
 
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false)
 
-  /** which layer is on top – 'a' or 'b' */
-  const [top, setTop] = useState<'a' | 'b'>('a')
-  /** image actually shown on each layer */
-  const [layerSrc, setLayerSrc] = useState<{ a: string; b: string }>({
-    a: IMAGES[0],
-    b: IMAGES[1],
-  })
-  /** index of the *next* image we’ll need */
-  const [idx, setIdx] = useState(2) // IMAGES[2] will be the 3rd image shown
-
   useEffect(() => {
-    const FADE_MS = 1200          // fade duration
-    const DISPLAY_MS = 6000       // time each image stays fully visible
+    document.body.style.overflow = showModal ? 'hidden' : 'auto'
+  }, [showModal])
 
-    const id = setInterval(() => {
-      // 1️⃣ put upcoming image on the hidden layer
-      setLayerSrc(prev => {
-        let nextImage: string
-        do {
-          nextImage = IMAGES[Math.floor(Math.random() * IMAGES.length)]
-        } while (nextImage === prev[top]) // avoid showing same image again
-      
-        return {
-          ...prev,
-          [top === 'a' ? 'b' : 'a']: nextImage,
-        }
-      })
-
-      // 2️⃣ after image is set, trigger the fade by switching who’s “on top”
-      //    (CSS takes care of the opacity animation)
-      //    Wait a micro‑task so the browser has the new background first.
-      requestAnimationFrame(() =>
-        setTop(prev => (prev === 'a' ? 'b' : 'a')),
-      )
-
-      // 3️⃣ calculate the next index for the _following_ cycle
-      setIdx(next => (next + 1) % IMAGES.length)
-    }, DISPLAY_MS)
-
-    return () => clearInterval(id)
-  }, [])
   return (
-    
     <main className="bg-black">
-   <section className="relative min-h-screen overflow-hidden">
-      {/* LAYER A */}
-      <div
-        className={`absolute inset-0 bg-center bg-cover transition-opacity duration-[1200ms] ${
-          top === 'a' ? 'opacity-100 z-10' : 'opacity-0 z-0'
-        }`}
-        style={{ backgroundImage: `url(${layerSrc.a})` }}
-      />
-      {/* LAYER B */}
-      <div
-        className={`absolute inset-0 bg-center bg-cover transition-opacity duration-[1200ms] ${
-          top === 'b' ? 'opacity-100 z-10' : 'opacity-0 z-0'
-        }`}
-        style={{ backgroundImage: `url(${layerSrc.b})` }}
-      />
+      <section>
+      {/* Background Slider */}
+      <div className="absolute inset-0 z-0">
+        <Slider {...sliderSettings}>
+          {IMAGES.map((src, i) => (
+            <div key={i}>
+              <div
+                className="h-screen bg-cover bg-center"
+                style={{ backgroundImage: `url(${src})` }}
+              />
+            </div>
+          ))}
+        </Slider>
+        <div className="absolute inset-0 bg-black/30 z-10" />
+      </div>
 
-      {/* optional dark overlay */}
-      <div className="absolute inset-0 bg-black/30 z-20" />
-
-      {/* hero content */}
+      {/* Foreground Content */}
   <div className="relative z-20 max-w-screen-2xl mx-auto p-8 md:p-16 min-h-screen md:h-screen flex flex-col justify-center">
     <h1 className="text-lg md:text-2xl text-white uppercase mb-2 tracking-wide">Showroom Edit</h1>
     <p className="text-4xl md:text-7xl text-white font-normal md:leading-18 mb-6 md:mb-12">
@@ -286,41 +255,6 @@ export default function HomePage() {
       </section>
 
 <section className="px-8 py-0 md:px-16 md:py-16" id="services">
-
-<details className="mb-8 md:mb-16 bg-black border-b border-white group">
-  <summary className="cursor-pointer pr-4 pb-4 text-white text-2xl md:text-4xl font-light flex justify-between items-center">
-    <span>We add your <em>full</em> product catalog to your website</span>
-    <svg
-      className="w-6 h-6 transition-transform duration-300 group-open:rotate-180"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </svg>
-  </summary>
-  <div className="pt-0 md:py-4 text-stone-300 text-lg md:text-2xl">
-    <p className="mb-4">And we mean your <em>full</em> product catalog of likely thousands of products across dozens of brands.</p>
-      <p className="mb-4">We have imported over 10,000 (and counting) products from over 50 brands for our showroom clients. 
-      We make no compromises to detail, imagery and function when we import a brand’s product line. </p>
-      <ul className ="columns-2 list-disc ml-6 mb-6">
-        <li>High quality product images</li>
-        <li>Full product descriptions</li>
-        <li>Tearsheets with custom showroom watermark</li>
-        <li>Visual view of product finishes, colorways and more</li>
-        <li>Private info availabe with trade account (pricing, lead times, etc.)</li>
-        <li>Related products</li>
-        <li>Appropriate tagging & categorizing</li>
-        <li>Designer Profiles</li>
-        <li>SEO Optimization</li>
-        <li>...and more! We customize product imports for each showroom.</li>
-      </ul>
-      <p className="mb-10">Our team handles ongoing product imports and updates. You and your team can focus on sales!</p>
-
-  </div>
-</details>
-
 <details className="mb-8 md:mb-16 bg-black border-b border-white group">
   <summary className="cursor-pointer pr-4 pb-4 text-white text-2xl md:text-4xl font-light flex justify-between items-center">
     <span>We design and build a custom website for your showroom</span>
@@ -339,7 +273,7 @@ export default function HomePage() {
   <p className="mb-4">We provide custom, top-to-bottom, site design for showrooms because your website is one of your most powerful sales tools.</p>
   <ul className ="columns-2 list-disc ml-6 mb-6">
         <li>Digital brand identity</li>
-        <li>Lifestyle features like journal, office radio and more</li>
+        <li>Lifestyle features like journal, radio and more</li>
         <li>Interactive showroom gallery</li>
         <li>Highly customized product page templates</li>
         <li>‘Add to cart’ functionality for quote requests</li>
@@ -348,6 +282,39 @@ export default function HomePage() {
         <li>Optimization for SEO and fast load times</li>
         <li>...and more!</li>
     </ul>
+  </div>
+</details>
+<details className="mb-8 md:mb-16 bg-black border-b border-white group">
+  <summary className="cursor-pointer pr-4 pb-4 text-white text-2xl md:text-4xl font-light flex justify-between items-center">
+    <span>We add your <em>full</em> product catalog to your website</span>
+    <svg
+      className="w-6 h-6 transition-transform duration-300 group-open:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    </svg>
+  </summary>
+  <div className="pt-0 md:py-4 text-stone-300 text-lg md:text-2xl">
+    <p className="mb-4">And we mean your <em>full</em> product catalog of likely thousands of products across dozens of brands.</p>
+      <p className="mb-4">We have imported over 13,000 (and counting) products from over 100 brands for our showroom clients. 
+      We make no compromises to detail, imagery and function when we import a brand’s product line. </p>
+      <ul className ="columns-2 list-disc ml-6 mb-6">
+        <li>High quality product images</li>
+        <li>Full product descriptions</li>
+        <li>Tearsheets with custom showroom watermark</li>
+        <li>Visual view of product finishes, colorways and more</li>
+        <li>Private info availabe with trade account (pricing, lead times, etc.)</li>
+        <li>Related products</li>
+        <li>Appropriate tagging & categorizing</li>
+        <li>Designer Profiles</li>
+        <li>SEO Optimization</li>
+        <li>...and more! We customize product imports for each showroom.</li>
+      </ul>
+      <p className="mb-10">Our team handles ongoing product imports and updates. You and your team can focus on sales!</p>
+
   </div>
 </details>
 
@@ -392,7 +359,7 @@ export default function HomePage() {
     </div>
     <div className="w-full md:w-2/3 md:px-4">
       <p className="text-stone-300 text-lg md:text-2xl mt-4 md:mt-0">  
-      <span className="md:text-white md:font-semibold">Allison Skinner</span> is a designer and developer based in Athens, Georgia. She has been designing and building custom websites for over 10 years. You can view her full portfolio here. Allison’s favorite part of working with showrooms is the achievement of adding their full product catalog to their website. It truly transforms their business! 
+      <span className="md:text-white md:font-semibold">Allison Skinner</span> is a designer and developer based in Athens, Georgia. She has been designing and building custom websites for over 10 years. You can view her full portfolio <a href="https://allisondskinner.com" target="_blank" className="text-white underline underline-offset-4 hover:no-underline">here</a>. Allison’s favorite part of working with showrooms is the achievement of adding their full product catalog to their website. It truly transforms their business! 
       </p>
     </div>
   </div>
@@ -407,7 +374,7 @@ export default function HomePage() {
       <span className ="md:text-white md:font-semibold">The team</span> is comprised of Allison’s two real life best friends, Nina Guzman and Tulsi TenEyck. We are all based in Athens, Georgia. Nina and Tulsi handle the ongoing product updates and imports for our showroom clients.</p>
       <p className="text-stone-300 text-lg md:text-2xl mb-4"><span className ="text-white font-semibold">Nina Guzman</span> is trained as a librarian and archivist. She provides an unmatched level of detail and organization when building complex product catalogs.</p>
       <p className="text-stone-300 text-lg md:text-2xl mb-4"><span className ="text-white font-semibold">Tulsi TenEyck</span> has over a decade of operational experience in the fashion, textile and interior design industries. Tulsi brings industry insight that helps us structure catalogs the way designers actually search and shop.</p>
-      <p className="text-stone-300 text-lg md:text-2xl">Outside the office, we love to go on girls trips and visit our favorite local businesses.</p>
+      <p className="text-stone-300 text-lg md:text-2xl">Outside the office, we love to go on girls trips and visit our favorite local Athens businesses.</p>
     </div>
   </div>
 
@@ -415,7 +382,7 @@ export default function HomePage() {
 <section className="px-8 md:px-16 pt-12 md:pt-24 text-left md:text-center pb-24 md:pb-64" id="contact">
   <h2 className="text-white my-4 text-3xl md:text-7xl font-light mx-auto">Get in Contact</h2>
   <p className="mb-4 md:mb-10 text-white text-lg md:text-2xl">It&rsquo;s as easy as sending Allison an email ♥️</p>
-  <p className="text-2xl md:text-4xl"><a className="text-center bg-white w-full md:w-auto block md:inline-block rounded-full py-2 md:py-4 px-6 md:px-12 text-black hover:bg-red-500 hover:text-white" href="mailto:info@allisondskinner.com">info [at] allisondskinner.com</a></p>
+  <p className="text-2xl md:text-4xl"><a className="text-center bg-white w-full md:w-auto block md:inline-block rounded-full py-2 md:py-4 px-6 md:px-12 text-black hover:bg-red-500 hover:text-white" href="mailto:info@allisondskinner.com">info@allisondskinner.com</a></p>
 </section>
 
 {showModal && (
