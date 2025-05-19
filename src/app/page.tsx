@@ -251,7 +251,7 @@ export default function HomePage() {
     <p className="mb-4">We know the showroom industry inside and out. Let us help you with all the technical requirements for running your showroom business.</p>
     <p className="mb-4">In addition to creating your website and importing your full product catalog, we also specialize in:</p>
     <ul className ="columns-2 list-disc ml-6 mb-6">
-    <li>Studio Designer integration (on another platform? let's chat!)</li>
+    <li>Studio Designer integration (on another platform? let&rsquo;s chat!)</li>
     <li>Pinterest bulk pinning</li>
     <li>Custom sales tools</li>
     <li>Trade account requests and approvals</li>
@@ -259,7 +259,7 @@ export default function HomePage() {
     <li>Textile sample orders</li>
     <li>Advanced support for email marketing</li>
     </ul>
-    <p className="mb-8">Already have someone doing your marketing or PR? That's great. We make a great technical partner for their creative vision.</p>
+    <p className="mb-8">Already have someone doing your marketing or PR? That&rsquo;s great. We make a great technical partner for their creative vision.</p>
   </div>
 </details>
 </section>
@@ -297,7 +297,7 @@ export default function HomePage() {
 </section>
 <section className="px-8 md:px-16 pt-12 md:pt-24 text-left md:text-center pb-24 md:pb-64" id="contact">
   <h2 className="text-white my-4 text-3xl md:text-7xl font-light mx-auto">Get in Contact</h2>
-  <p className="mb-4 md:mb-10 text-white text-lg md:text-2xl">It's as easy as sending Allison an email ♥️</p>
+  <p className="mb-4 md:mb-10 text-white text-lg md:text-2xl">It&rsquo;s as easy as sending Allison an email ♥️</p>
   <p className="text-2xl md:text-4xl"><a className="text-center bg-white w-full md:w-auto block md:inline-block rounded-full py-2 md:py-4 px-6 md:px-12 text-black hover:bg-red-500 hover:text-white" href="mailto:info@allisondskinner.com">info [at] allisondskinner.com</a></p>
 </section>
 
