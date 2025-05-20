@@ -354,22 +354,13 @@ export default function HomePage() {
   </h2>
   <div className="flex flex-wrap md:-mx-4 mb-8">
     <h3 className="text-xl text-white mb-4 md:hidden uppercase">Allison Skinner</h3>
-    <div className="w-full md:w-1/3 md:px-4">
-      <img src="/images/placeholder-2.png"/>
+    <div className="w-full md:w-1/2 lg:w-1/3 md:px-4">
+      <img className="rounded-full" src="/images/allison.jpg"/>
     </div>
-    <div className="w-full md:w-2/3 md:px-4">
+    <div className="w-full md:w-1/2 lg:w-2/3 md:px-4">
       <p className="text-stone-300 text-lg md:text-2xl mt-4 md:mt-0">  
       <span className="md:text-white md:font-semibold">Allison Skinner</span> is a designer and developer based in Athens, Georgia. She has been designing and building custom websites for over 10 years. You can view her full portfolio <a href="https://allisondskinner.com" target="_blank" className="text-white underline underline-offset-4 hover:no-underline">here</a>. Allison’s favorite part of working with showrooms is the achievement of adding their full product catalog to their website. It truly transforms their business! 
       </p>
-    </div>
-  </div>
-  <div className="flex flex-wrap md:-mx-4">
-  <h3 className="text-xl text-white mb-4 md:hidden uppercase md:hidden">The Team</h3>
-    <div className="w-full md:w-1/3 md:px-4">
-      <img src="/images/placeholder-2.png"/>
-    </div>
-    <div className="w-full md:w-2/3 md:px-4">
-      
       <p className="text-stone-300 text-lg md:text-2xl mb-4 mt-4 md:mt-0">  
       <span className ="md:text-white md:font-semibold">The team</span> is comprised of Allison’s two real life best friends, Nina Guzman and Tulsi TenEyck. We are all based in Athens, Georgia. Nina and Tulsi handle the ongoing product updates and imports for our showroom clients.</p>
       <p className="text-stone-300 text-lg md:text-2xl mb-4"><span className ="text-white font-semibold">Nina Guzman</span> is trained as a librarian and archivist. She provides an unmatched level of detail and organization when building complex product catalogs.</p>
@@ -377,6 +368,7 @@ export default function HomePage() {
       <p className="text-stone-300 text-lg md:text-2xl">Outside the office, we love to go on girls trips and visit our favorite local Athens businesses.</p>
     </div>
   </div>
+  
 
 </section>
 <section className="px-8 md:px-16 pt-8 md:pt-24 text-left md:text-center pb-24 md:pb-64" id="contact">
