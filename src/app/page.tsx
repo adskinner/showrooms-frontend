@@ -108,23 +108,22 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex flex-wrap md:-mx-4">
-            <h2 className="text-xl text-white font-light pb-2 md:hidden">J NELSON [coming soon]</h2>
+            <h2 className="text-xl text-white font-light pb-2 md:hidden">J NELSON</h2>
 
               <div className="w-full md:w-3/4 md:px-4">
-              <img src="/images/jn-homepage.jpg"/>
+              <a href="http://jnelsoninc.com/"><img src="/images/jn-homepage.jpg"/></a>
               </div>
               <div className="w-full md:w-1/4 md:px-4">
-              <h2 className="text-xl text-white font-light pb-4 hidden md:block">J NELSON [coming soon]</h2>
+              <h2 className="text-xl text-white font-light pb-4 hidden md:block">J NELSON</h2>
               <ul className="text-stone-300 leading-normal font-light mb-4 md:mb-6 mt-4 md:mt-0">
                 <li>Full product catalog of 4,000 products</li>
                 <li>41 Brands</li>
                 <li>Add to inquiry cart</li>
                 <li>Trade accounts</li>
               </ul>
+              <p className="text-white"><a className="text-white underline underline-offset-4 hover:no-underline decoration-1" href="http://jnelsoninc.com/">visit jnelsoninc.com ↗</a></p>
               </div>
             </div>
-            
-            
             
           </div>
           </section>
